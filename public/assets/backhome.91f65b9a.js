@@ -1,0 +1,1 @@
+import{u as a,o as c,c as o,g as s}from"./index.c9b489f7.js";const e={setup(){const c=a();return{goback:function(){c.push("/")}}}},n=s("data-v-56664d21")(((a,s,e,n,t,d)=>(c(),o("i",{class:"el-icon-delete change-close",onClick:s[1]||(s[1]=(...a)=>n.goback&&n.goback(...a))}))));e.render=n,e.__scopeId="data-v-56664d21";export{e as _};
