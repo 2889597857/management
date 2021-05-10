@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const secretKey = 'whcss'
 
-exports.sign = ({ account, role }, time = '1d') => {
+exports.sign = ({ account, role }, time = '3d') => {
     const token = jwt.sign({ account: account, role: role }, secretKey, {
         expiresIn: time
     })
@@ -12,7 +12,6 @@ exports.verify = (token) => {
         if (err) {  //  时间失效的时候/ 伪造的token          
             return false
         } else {
-            console.log(decode)
             return decode
         }
     })

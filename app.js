@@ -2,24 +2,19 @@ const express = require('express');
 const routers = require('./routers/index');
 const jwt = require('./config/jwt');
 
-
 const app = express();
-const port = 3000;
+const port = 3100;
 
 app.use(express.static('public'))
 app.use(express.json());
 
 app.use('/', (req, res, next) => {
-    if (req.url == "/login") {
-        next()
-    }
-    else if (req.headers.authorization && jwt.verify(req.headers.authorization)) {
-        next()
-    } else {
-        res.status(404).send()
-    }
+    const token = req.headers.authorization
+    if (req.url == "/login") next();
+    else if (token && jwt.verify(token)) next();
+    else res.status(404).send();
 })
-routers(app)
 
+routers(app)
 
 app.listen(port);
