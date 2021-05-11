@@ -7,7 +7,6 @@ router.post('/', (req, res) => {
     if (a) {
         res.send(true);
     } else {
-        console.log(1111);
         res.send(false)
     }
 });

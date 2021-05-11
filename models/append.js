@@ -8,5 +8,12 @@ const appendModel = mongoose.Schema({
     operator: String,
     time: String
 })
-
+appendModel.statics = {
+    fetch (skip, cb) {
+        return this.find({}, { _id: 0, __v: 0 })
+            .skip(skip * 15)
+            .limit(15)
+            .exec(cb);
+    }
+}
 module.exports = mongoose.model('append', appendModel, 'append')
